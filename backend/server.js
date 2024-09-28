@@ -8,7 +8,7 @@ app.use(express.json()); // for parsing application/json
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/myDatabase', {
+mongoose.connect('mongodb://localhost:27017/test/commodities', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
