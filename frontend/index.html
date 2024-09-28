@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commodity Data Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('http://wallpapercave.com/wp/wp1886357.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            height: calc(100vh - 60px);
+            overflow: hidden;
+        }
+
+        .form-section,
+        .data-section {
+            width: 48%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f9f9f9;
+        }
+
+        .toggle-button {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Enter Commodity Data</h2>
+            <form id="commodityForm">
+                <label for="date">Date</label>
+                <input type="date" id="date" required>
+
+                <label for="categoryName">Category Name</label>
+                <input type="text" id="categoryName" list="categoryList" required>
+                <datalist id="categoryList">
+                    <option value="cereals_and_tubers">
+                    <option value="miscellaneous_food">
+                    <option value="oil_and_fats">
+                    <option value="pulses_and_nuts">
+                    <option value="vegetables_and_fruits">
+                    <option value="milk_and_dairy">
+                </datalist>
+
+                <label for="commodityType">Commodity Type</label>
+                <input type="text" id="commodityType" list="commodityTypeOptions" required>
+                <datalist id="commodityTypeOptions">
+                    <option value="Rice">
+                    <option value="Wheat">
+                    <option value="Sugar">
+                    <option value="Oil (mustard)">
+                    <option value="Potatoes">
+                    <option value="Chickpeas">
+                    <option value="Onions">
+                    <option value="Milk">
+                    <option value="Wheat flour">
+                    <option value="Milk (pasteurized)">
+                    <option value="Salt (iodised)">
+                    <option value="Oil (groundnut)">
+                    <option value="Oil (palm)">
+                    <option value="Oil (sunflower)">
+                    <option value="Lentils (masur)">
+                    <option value="Tomatoes">
+                    <option value="Tea (black)">
+                    <option value="Lentils">
+                    <option value="Sugar (jaggery/gur)">
+                    <option value="Ghee (vanaspati)">
+                    <option value="Lentils (moong)">
+                    <option value="Lentils (urad)">
+                    <option value="Oil (soybean)">
+                </datalist>
+
+                <label for="dailyPrice">Daily Price</label>
+                <input type="number" id="dailyPrice" required>
+
+                <label for="avgPrice">Average Price</label>
+                <input type="number" id="avgPrice" required>
+
+                <label for="state">State</label>
+                <input type="text" id="state" list="stateOptions" required>
+                <datalist id="stateOptions">
+                    <option value="Delhi">
+                    <option value="Gujarat">
+                    <option value="Himachal Pradesh">
+                    <option value="Karnataka">
+                    <option value="Madhya Pradesh">
+                    <option value="Maharashtra">
+                    <option value="Orissa">
+                    <option value="Telangana">
+                    <option value="Tripura">
+                    <option value="West Bengal">
+                    <option value="Meghalaya">
+                    <option value="Rajasthan">
+                    <option value="Tamil Nadu">
+                    <option value="Assam">
+                    <option value="Kerala">
+                    <option value="Uttar Pradesh">
+                    <option value="Mizoram">
+                    <option value="Bihar">
+                    <option value="Chandigarh">
+                    <option value="Jharkhand">
+                    <option value="Nagaland">
+                    <option value="Punjab">
+                    <option value="Uttarakhand">
+                    <option value="Andhra Pradesh">
+                    <option value="Haryana">
+                    <option value="Andaman and Nicobar">
+                    <option value="Puducherry">
+                    <option value="Goa">
+                    <option value="Chhattisgarh">
+                    <option value="Manipur">
+                    <option value="Sikkim">
+                </datalist>
+
+                <label for="market">Market</label>
+                <input type="text" id="market" required>
+
+                <label for="bufferStock">Buffer Stock Available</label>
+                <input type="number" id="bufferStock" required>
+
+                <label for="stockRelease">Stock Released</label>
+                <input type="number" id="stockRelease" required>
+
+                <label for="supplyData">Supply Data</label>
+                <input type="number" id="supplyData" required>
+
+                <label for="demandData">Demand Data</label>
+                <input type="number" id="demandData" required>
+
+                <label for="season">Season</label>
+                <input type="text" id="season" list="seasonOptions" required>
+                <datalist id="seasonOptions">
+                    <option value="Winter">
+                    <option value="Spring">
+                    <option value="Summer">
+                    <option value="Monsoon">
+                    <option value="Autumn">
+                </datalist>
+
+                <label for="productionEstimate">Production Estimate</label>
+                <input type="number" id="productionEstimate" required>
+
+                <label for="importData">Import Data</label>
+                <input type="text" id="importData" placeholder="Import Data" required>
+
+                <label for="exportData">Export Data</label>
+                <input type="text" id="exportData" placeholder="Export Data" required>
+
+                <label for="disasterScale">Disaster Scale</label>
+                <input type="number" id="disasterScale" min="1" max="5" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="data-section hidden" id="dataSection">
+            <h2>Stored Data</h2>
+            <table id="commodityTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category Name</th>
+                        <th>Commodity Type</th>
+                        <th>Daily Price</th>
+                        <th>Average Price</th>
+                        <th>State</th>
+                        <th>Market</th>
+                        <th>Buffer Stock</th>
+                        <th>Stock Release</th>
+                        <th>Supply Data</th>
+                        <th>Demand Data</th>
+                        <th>Season</th>
+                        <th>Production Estimate</th>
+                        <th>Import</th>
+                        <th>Export</th>
+                        <th>Disaster Scale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be appended here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button class="toggle-button" id="toggleDataButton">Show Stored Data</button>
+
+    <script>
+        const form = document.getElementById('commodityForm');
+        const dataSection = document.getElementById('dataSection');
+        const toggleButton = document.getElementById('toggleDataButton');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = {
+                date: document.getElementById('date').value,
+                categoryName: document.getElementById('categoryName').value,
+                commodityType: document.getElementById('commodityType').value,
+                dailyPrice: document.getElementById('dailyPrice').value,
+                avgPrice: document.getElementById('avgPrice').value,
+                state: document.getElementById('state').value,
+                market: document.getElementById('market').value,
+                bufferStock: document.getElementById('bufferStock').value,
+                stockRelease: document.getElementById('stockRelease').value,
+                supplyData: document.getElementById('supplyData').value,
+                demandData: document.getElementById('demandData').value,
+                seasonalIndicator: document.getElementById('season').value,
+                productionEstimate: document.getElementById('productionEstimate').value,
+                importData: document.getElementById('importData').value,
+                exportData: document.getElementById('exportData').value,
+                disasterScale: document.getElementById('disasterScale').value
+            };
+
+            // Send data to the backend
+            fetch('http://localhost:3000/add-commodity', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to submit data: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('Commodity data saved successfully');
+                    fetchAndDisplayData(); // Refresh stored data after submission
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('An error occurred: ' + error.message);
+                });
+
+            // Reset form after submission
+            form.reset();
+        });
+
+        // Fetch and display stored data
+        function fetchAndDisplayData() {
+            fetch('http://localhost:3000/commodities')
+                .then(response => response.json())
+                .then(commodityData => {
+                    const tableBody = document.getElementById('commodityTable').getElementsByTagName('tbody')[0];
+                    tableBody.innerHTML = ''; // Clear previous data
+
+                    commodityData.forEach((data, index) => {
+                        const row = tableBody.insertRow(index);
+                        row.insertCell(0).innerHTML = data.date;
+                        row.insertCell(1).innerHTML = data.categoryName;
+                        row.insertCell(2).innerHTML = data.commodityType;
+                        row.insertCell(3).innerHTML = data.dailyPrice;
+                        row.insertCell(4).innerHTML = data.avgPrice;
+                        row.insertCell(5).innerHTML = data.state;
+                        row.insertCell(6).innerHTML = data.market;
+                        row.insertCell(7).innerHTML = data.bufferStock;
+                        row.insertCell(8).innerHTML = data.stockRelease;
+                        row.insertCell(9).innerHTML = data.supplyData;
+                        row.insertCell(10).innerHTML = data.demandData;
+                        row.insertCell(11).innerHTML = data.seasonalIndicator;
+                        row.insertCell(12).innerHTML = data.productionEstimate;
+                        row.insertCell(13).innerHTML = data.importData;
+                        row.insertCell(14).innerHTML = data.exportData;
+                        row.insertCell(15).innerHTML = data.disasterScale;
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+
+        // Show or hide the data section
+        toggleButton.addEventListener('click', function () {
+            dataSection.classList.toggle('hidden'); // Toggle visibility
+            toggleButton.textContent = dataSection.classList.contains('hidden') ? 'Show Stored Data' : 'Hide Stored Data';
+        });
+    </script>
+
+</body>
+
+</html>
