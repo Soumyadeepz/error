@@ -1,6 +1,5 @@
-// server.js
 const express = require('express');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // First and only declaration
 const cors = require('cors');
 
 // Initialize Express
@@ -9,8 +8,6 @@ app.use(express.json()); // for parsing application/json
 app.use(cors());
 
 // Connect to MongoDB
-const mongoose = require('mongoose');
-
 mongoose.connect('mongodb://127.0.0.1:27017/myDatabase', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -18,26 +15,24 @@ mongoose.connect('mongodb://127.0.0.1:27017/myDatabase', {
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.log('Error connecting to MongoDB', err));
 
-
 // Define a Mongoose schema
 const commoditySchema = new mongoose.Schema({
     date: String,
-    catagoryName: String, // Fixed spelling
+    catagoryName: String,
     commodityType: String,
     dailyPrice: Number,
     avgPrice: Number,
-    state: String, // Fixed casing for consistency
-    market: String, // Fixed casing for consistency
+    state: String,
+    market: String,
     bufferStock: Number,
     stockRelease: Number,
     supplyData: Number,
     demandData: Number,
     seasonalIndicator: String,
-    // sowingArea: Number, // Uncomment if needed
     productionEstimate: Number,
     importData: String,
     exportData: String,
-    disasterScale: String // Fixed casing for consistency
+    disasterScale: String
 });
 
 const Commodity = mongoose.model('Commodity', commoditySchema);
@@ -47,10 +42,10 @@ app.post('/add-commodity', async (req, res) => {
     try {
         const newCommodity = new Commodity(req.body);
         await newCommodity.save();
-        res.status(200).json({ message: 'Commodity Data Saved' }); // Changed to JSON response
+        res.status(200).json({ message: 'Commodity Data Saved' });
     } catch (err) {
-        console.error(err); // Log the error for debugging
-        res.status(400).json({ message: 'Error Saving Data' }); // Changed to JSON response
+        console.error(err);
+        res.status(400).json({ message: 'Error Saving Data' });
     }
 });
 
@@ -60,8 +55,8 @@ app.get('/commodities', async (req, res) => {
         const commodities = await Commodity.find();
         res.json(commodities);
     } catch (err) {
-        console.error(err); // Log the error for debugging
-        res.status(400).json({ message: 'Error Fetching Data' }); // Changed to JSON response
+        console.error(err);
+        res.status(400).json({ message: 'Error Fetching Data' });
     }
 });
 
